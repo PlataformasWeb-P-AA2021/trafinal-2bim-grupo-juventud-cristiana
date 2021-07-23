@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
+    <title>Demo</title>
+  </head>
+  <body>
+    <h5>Listado de casas2</h5>
+
+    <table id="tabla_datos">
+      <thead>
+    
+        <tr>
+          <th>barrio</th>
+          <th>Direccion</th>
+          <th>Propietario</th>
+          <th>valor</th>
+          <th>color</th>
+          <th>cuartos</th>
+          <th>pisos</th>
+        </tr>
+      </thead>
+    
+      {% for e in casas %}
+      <tr>
+        <td> {{e['barrio']}}</td>
+        <td> {{e['direccion']}}</td>
+        <td> {{e['propietario']}}</td>
+        <td> {{e['valor']}}</td>
+        <td> {{e['color']}}</td>
+        <td> {{e['cuartos']}}</td>
+        <td> {{e['pisos']}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#tabla_datos').DataTable();
+      });
+    </script>  </body>
+</html>

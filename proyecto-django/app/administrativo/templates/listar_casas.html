@@ -1,0 +1,50 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Listado de Estudiantes
+{% endblock %}
+{% block titulo %}
+    Listado de Casas
+{% endblock %}
+{% block content %}
+<br>
+<table id="tabla_datos">
+  <thead>
+
+    <tr>
+      <th>barrio</th>
+      <th>Direccion</th>
+      <th>Propietario</th>
+      <th>valor</th>
+      <th>color</th>
+      <th>cuartos</th>
+      <th>pisos</th>
+      <th>opciones</th>
+    </tr>
+  </thead>
+
+  {% for e in casas %}
+  <tr>
+    <td> {{e.barrio.nombre}}</td>
+    <td> {{e.direccion}}</td>
+    <td> {{e.propietario.nombre}}</td>
+    <td> {{e.valor}}</td>
+    <td> {{e.color}}</td>
+    <td> {{e.cuartos}}</td>
+    <td> {{e.pisos}}</td>
+    <td> 
+      <a href="{% url 'editar_casa' e.id %}">editar</a> <br>
+      <a href="{% url 'eliminar_casa' e.id %}"
+      onclick="return confirm('¿Está seguro de la eliminación?')" >
+      eliminar</a>
+    </td>
+
+  </tr>
+  {% endfor %}
+</table>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+{% endblock %}

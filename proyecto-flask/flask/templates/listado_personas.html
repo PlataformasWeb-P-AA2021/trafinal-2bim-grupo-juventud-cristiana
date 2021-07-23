@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
+    <title>Demo</title>
+  </head>
+  <body>
+    <h5>Listado de personas</h5>
+
+    <table id="tabla_datos">
+      <thead>
+    
+        <tr>
+          <th>nombre</th>
+          <th>apellido</th>
+          <th>cedula</th>
+          <th>correo</th>
+        </tr>
+      </thead>
+    
+      {% for e in personas %}
+      <tr>
+        <td> {{e['nombre']}}</td>
+        <td> {{e['apellido']}}</td>
+        <td> {{e['cedula']}}</td>
+        <td> {{e['correo']}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#tabla_datos').DataTable();
+      });
+    </script>  </body>
+</html>

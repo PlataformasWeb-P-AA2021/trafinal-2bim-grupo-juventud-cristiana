@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Listado de Estudiantes
+{% endblock %}
+
+{% block content %}
+<h3>Medidores </h3>
+
+<table id="tabla_datos">
+  
+  <thead>
+    <tr>
+      <th>Marca</th>
+      <th>Direccion</th>
+      <th>Propietario</th>
+      <th>Costo</th>
+      <th>Barrio</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+
+  {% for e in medidor %}
+  <tr>
+    <td> {{e.marca}}</td>
+    <td> {{e.direccion}}</td>
+    <td> {{e.propietario.nombre}}</td>
+    <td> {{e.costo}}</td>
+    <td> {{e.barrio.nombre}}</td>
+    <td> <a href="{% url 'obtener_medidor' e.id %}">ver</a> <br>
+      <a href="{% url 'editar_Medidor' e.id %}">editar</a> <br>
+      <a href="{% url 'eliminar_Medidor' e.id %}"
+      onclick="return confirm('¿Está seguro de la eliminación?')" >
+      eliminar</a>
+    </td>
+
+  </tr>
+  {% endfor %}
+</table>
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+{% endblock %}
