@@ -25,7 +25,9 @@ SECRET_KEY = '^wfd@g&ux1c90)a095ba1evi$7dez*^klty@5ze(wdsh-%84!@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1","localhost"]
+
+
 
 
 # Application definition
@@ -80,7 +82,7 @@ DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
 'NAME': 'data',
-'USER': 'root',
+'USER': 'kali',
 'PASSWORD': '',
 'HOST': 'localhost',
 'PORT': '3306',
@@ -129,7 +131,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# modificar esta variable solo en producción, donde proyecto1, es el subdirectorio usado en el archivo de nginx
+STATIC_URL = '/proyecto1/static/'
+
+# agregar y usar esta variable solo en producción, donde proyecto1, es el subdirectorio usado en el archivo de nginx
+#FORCE_SCRIPT_NAME = '/proyecto1'
+
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
